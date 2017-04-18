@@ -1,4 +1,4 @@
-package com.erostech.trails;
+package com.erostech.trails.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.erostech.trails.Post;
+import com.erostech.trails.R;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
