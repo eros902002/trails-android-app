@@ -1,9 +1,13 @@
-package com.erostech.trails;
+package com.erostech.trails.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.erostech.trails.ui.viewholders.PostViewHolder;
+import com.erostech.trails.R;
+import com.erostech.trails.core.data.models.Post;
 
 import java.util.List;
 

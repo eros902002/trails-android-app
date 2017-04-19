@@ -1,4 +1,4 @@
-package com.erostech.trails;
+package com.erostech.trails.core.module;
 
 import android.app.Application;
 

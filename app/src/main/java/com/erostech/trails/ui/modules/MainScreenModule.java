@@ -1,5 +1,6 @@
-package com.erostech.trails.ui;
+package com.erostech.trails.ui.modules;
 
+import com.erostech.trails.ui.contracts.MainScreenContract;
 import com.erostech.trails.util.CustomScope;
 
 import dagger.Module;

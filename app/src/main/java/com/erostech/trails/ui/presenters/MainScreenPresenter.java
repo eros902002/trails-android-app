@@ -1,7 +1,8 @@
-package com.erostech.trails.ui;
+package com.erostech.trails.ui.presenters;
 
-import com.erostech.trails.Post;
-import com.erostech.trails.PostService;
+import com.erostech.trails.core.data.models.Post;
+import com.erostech.trails.core.PostService;
+import com.erostech.trails.ui.contracts.MainScreenContract;
 
 import java.util.List;
 

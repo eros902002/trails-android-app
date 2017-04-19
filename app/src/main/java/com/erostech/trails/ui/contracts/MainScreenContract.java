@@ -1,6 +1,6 @@
-package com.erostech.trails.ui;
+package com.erostech.trails.ui.contracts;
 
-import com.erostech.trails.Post;
+import com.erostech.trails.core.data.models.Post;
 
 import java.util.List;
 

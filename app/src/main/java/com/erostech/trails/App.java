@@ -2,6 +2,11 @@ package com.erostech.trails;
 
 import android.app.Application;
 
+import com.erostech.trails.core.component.DaggerNetComponent;
+import com.erostech.trails.core.component.NetComponent;
+import com.erostech.trails.core.module.AppModule;
+import com.erostech.trails.core.module.NetModule;
+
 /**
  * Created by erosgarciaponte on 18/04/2017.
  */

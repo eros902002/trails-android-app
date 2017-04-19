@@ -1,6 +1,8 @@
-package com.erostech.trails.ui;
+package com.erostech.trails.ui.components;
 
-import com.erostech.trails.NetComponent;
+import com.erostech.trails.core.component.NetComponent;
+import com.erostech.trails.ui.modules.MainScreenModule;
+import com.erostech.trails.ui.fragments.MainActivityFragment;
 import com.erostech.trails.util.CustomScope;
 
 import dagger.Component;

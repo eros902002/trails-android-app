@@ -1,4 +1,6 @@
-package com.erostech.trails;
+package com.erostech.trails.core;
+
+import com.erostech.trails.core.data.models.Post;
 
 import java.util.List;
 

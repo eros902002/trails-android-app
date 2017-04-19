@@ -1,4 +1,7 @@
-package com.erostech.trails;
+package com.erostech.trails.core.component;
+
+import com.erostech.trails.core.module.AppModule;
+import com.erostech.trails.core.module.NetModule;
 
 import javax.inject.Singleton;
 

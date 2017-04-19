@@ -1,8 +1,10 @@
-package com.erostech.trails;
+package com.erostech.trails.ui.viewholders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import com.erostech.trails.core.data.models.Post;
 
 /**
  * Created by erosgarciaponte on 18/04/2017.

@@ -1,4 +1,4 @@
-package com.erostech.trails.ui;
+package com.erostech.trails.ui.fragments;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,9 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.erostech.trails.App;
-import com.erostech.trails.Post;
-import com.erostech.trails.PostsAdapter;
+import com.erostech.trails.core.data.models.Post;
+import com.erostech.trails.adapters.PostsAdapter;
 import com.erostech.trails.R;
+import com.erostech.trails.ui.components.DaggerMainScreenComponent;
+import com.erostech.trails.ui.contracts.MainScreenContract;
+import com.erostech.trails.ui.modules.MainScreenModule;
+import com.erostech.trails.ui.presenters.MainScreenPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,11 @@ public class MainActivityFragment extends Fragment implements MainScreenContract
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
-        DaggerMainScreenComponent.builder().netComponent(((App) getActivity().getApplicationContext()).getNetComponent()).mainScreenModule(new MainScreenModule(this)).build().inject(this);
+        DaggerMainScreenComponent.builder()
+                .netComponent(((App) getActivity().getApplicationContext()).getNetComponent())
+                .mainScreenModule(new MainScreenModule(this))
+                .build()
+                .inject(this);
 
         return view;
     }
@@ -56,6 +64,8 @@ public class MainActivityFragment extends Fragment implements MainScreenContract
 
         mAdapter = new PostsAdapter(mPosts);
         mRecyclerView.setAdapter(mAdapter);
+
+        mainPresenter.loadPost();
     }
 
     @Override
