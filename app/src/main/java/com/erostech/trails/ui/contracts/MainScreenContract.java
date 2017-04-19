@@ -1,5 +1,6 @@
 package com.erostech.trails.ui.contracts;
 
+import com.erostech.trails.core.data.models.Country;
 import com.erostech.trails.core.data.models.Post;
 
 import java.util.List;
@@ -10,12 +11,12 @@ import java.util.List;
 
 public interface MainScreenContract {
     interface View {
-        void showPosts(List<Post> posts);
+        void showCountries(List<Country> posts);
         void showError(String message);
         void showComplete();
     }
 
     interface Presenter {
-        void loadPost();
+        void loadCountries();
     }
 }

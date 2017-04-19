@@ -1,5 +1,7 @@
 package com.erostech.trails.ui.presenters;
 
+import com.erostech.trails.core.TrailsService;
+import com.erostech.trails.core.data.models.Country;
 import com.erostech.trails.core.data.models.Post;
 import com.erostech.trails.core.PostService;
 import com.erostech.trails.ui.contracts.MainScreenContract;
@@ -28,13 +30,13 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     }
 
     @Override
-    public void loadPost() {
-        mRetrofit.create(PostService.class)
-                .getPostList()
+    public void loadCountries() {
+        mRetrofit.create(TrailsService.class)
+                .getCountries()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe(new Observer<List<Post>>() {
+                .subscribe(new Observer<List<Country>>() {
                     @Override
                     public void onCompleted() {
                         mView.showComplete();
@@ -46,8 +48,8 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(List<Post> posts) {
-                        mView.showPosts(posts);
+                    public void onNext(List<Country> countries) {
+                        mView.showCountries(countries);
                     }
                 });
     }

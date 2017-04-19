@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.erostech.trails.App;
+import com.erostech.trails.adapters.CountriesAdapter;
+import com.erostech.trails.core.data.models.Country;
 import com.erostech.trails.core.data.models.Post;
 import com.erostech.trails.adapters.PostsAdapter;
 import com.erostech.trails.R;
@@ -30,15 +32,15 @@ import javax.inject.Inject;
 public class MainActivityFragment extends Fragment implements MainScreenContract.View {
 
     private RecyclerView mRecyclerView;
-    private PostsAdapter mAdapter;
+    private CountriesAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private List<Post> mPosts;
+    private List<Country> mCountries;
 
     @Inject
     MainScreenPresenter mainPresenter;
 
     public MainActivityFragment() {
-        mPosts = new ArrayList<>();
+        mCountries = new ArrayList<>();
     }
 
     @Override
@@ -62,16 +64,16 @@ public class MainActivityFragment extends Fragment implements MainScreenContract
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new PostsAdapter(mPosts);
+        mAdapter = new CountriesAdapter(mCountries);
         mRecyclerView.setAdapter(mAdapter);
 
-        mainPresenter.loadPost();
+        mainPresenter.loadCountries();
     }
 
     @Override
-    public void showPosts(List<Post> posts) {
-        mPosts.clear();
-        mPosts.addAll(posts);
+    public void showCountries(List<Country> countries) {
+        mCountries.clear();
+        mCountries.addAll(countries);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -82,6 +84,6 @@ public class MainActivityFragment extends Fragment implements MainScreenContract
 
     @Override
     public void showComplete() {
-        Toast.makeText(getActivity(), "Posts loaded succesfully", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Countries loaded succesfully", Toast.LENGTH_LONG).show();
     }
 }

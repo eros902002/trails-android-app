@@ -2,6 +2,7 @@ package com.erostech.trails;
 
 import android.app.Application;
 
+import com.erostech.trails.config.Config;
 import com.erostech.trails.core.component.DaggerNetComponent;
 import com.erostech.trails.core.component.NetComponent;
 import com.erostech.trails.core.module.AppModule;
@@ -19,7 +20,7 @@ public class App extends Application {
         super.onCreate();
         mNetComponent = DaggerNetComponent.builder()
                 .appModule(new AppModule(this))
-                .netModule(new NetModule("http://jsonplaceholder.typicode.com/"))
+                .netModule(new NetModule(Config.TRAILS_API_URL))
                 .build();
     }
 
