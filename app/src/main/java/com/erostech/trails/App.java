@@ -20,7 +20,7 @@ public class App extends Application {
         super.onCreate();
         mNetComponent = DaggerNetComponent.builder()
                 .appModule(new AppModule(this))
-                .netModule(new NetModule(Config.TRAILS_API_URL))
+                .netModule(new NetModule(Config.MOVIES_API_URL))
                 .build();
     }
 

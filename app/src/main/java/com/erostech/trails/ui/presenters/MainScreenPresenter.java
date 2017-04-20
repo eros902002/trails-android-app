@@ -1,9 +1,12 @@
 package com.erostech.trails.ui.presenters;
 
+import com.erostech.trails.config.Config;
+import com.erostech.trails.core.MovieService;
 import com.erostech.trails.core.TrailsService;
 import com.erostech.trails.core.data.models.Country;
 import com.erostech.trails.core.data.models.Post;
 import com.erostech.trails.core.PostService;
+import com.erostech.trails.core.data.models.TopRatedMovies;
 import com.erostech.trails.ui.contracts.MainScreenContract;
 
 import java.util.List;
@@ -30,27 +33,51 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     }
 
     @Override
-    public void loadCountries() {
-        mRetrofit.create(TrailsService.class)
-                .getCountries()
+    public void loadInitialPage(int page) {
+        loadMovies(page, new Observer<TopRatedMovies>() {
+            @Override
+            public void onCompleted() {
+                mView.showComplete();
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                mView.showInitialPageError(throwable);
+            }
+
+            @Override
+            public void onNext(TopRatedMovies movies) {
+                mView.showInitialPage(movies.getResults());
+            }
+        });
+    }
+
+    @Override
+    public void loadNextPage(int page) {
+        loadMovies(page, new Observer<TopRatedMovies>() {
+            @Override
+            public void onCompleted() {
+                mView.showComplete();
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                mView.showNextPageError(throwable);
+            }
+
+            @Override
+            public void onNext(TopRatedMovies movies) {
+                mView.showNextPage(movies.getResults());
+            }
+        });
+    }
+
+    private void loadMovies(int page, Observer<TopRatedMovies> observer) {
+        mRetrofit.create(MovieService.class)
+                .getTopRatedMovies(Config.MOVIES_API_KEY, Config.MOVIES_DEFAULT_LANGUAGE, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe(new Observer<List<Country>>() {
-                    @Override
-                    public void onCompleted() {
-                        mView.showComplete();
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        mView.showError(throwable.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(List<Country> countries) {
-                        mView.showCountries(countries);
-                    }
-                });
+                .subscribe(observer);
     }
 }

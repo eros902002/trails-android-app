@@ -11,7 +11,7 @@ import rx.Observable;
  */
 
 public interface MovieService {
-    @GET("top_rated")
+    @GET("movie/top_rated")
     Observable<TopRatedMovies> getTopRatedMovies(
             @Query("api_key") String apiKey,
             @Query("language") String language,

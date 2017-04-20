@@ -2,6 +2,7 @@ package com.erostech.trails.ui.contracts;
 
 import com.erostech.trails.core.data.models.Country;
 import com.erostech.trails.core.data.models.Post;
+import com.erostech.trails.core.data.models.Result;
 
 import java.util.List;
 
@@ -11,12 +12,15 @@ import java.util.List;
 
 public interface MainScreenContract {
     interface View {
-        void showCountries(List<Country> posts);
-        void showError(String message);
+        void showInitialPage(List<Result> movies);
+        void showNextPage(List<Result> movies);
+        void showInitialPageError(Throwable throwable);
+        void showNextPageError(Throwable throwable);
         void showComplete();
     }
 
     interface Presenter {
-        void loadCountries();
+        void loadInitialPage(int page);
+        void loadNextPage(int page);
     }
 }
