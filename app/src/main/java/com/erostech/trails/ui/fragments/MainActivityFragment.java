@@ -38,6 +38,10 @@ import java.util.concurrent.TimeoutException;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -45,18 +49,21 @@ public class MainActivityFragment extends Fragment implements MainScreenContract
 
     private static final int PAGE_START = 1;
 
-    private ProgressBar mProgressBar;
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.progress_indicator) ProgressBar mProgressBar;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.error_layout) LinearLayout mErrorLayout;
+    @BindView(R.id.error_btn_retry) Button mRetryButton;
+    @BindView(R.id.error_txt_cause) TextView mErrorText;
+
     private PaginationAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
-    private LinearLayout mErrorLayout;
-    private Button mRetryButton;
-    private TextView mErrorText;
 
     private boolean isLoading = false;
     private boolean isLastPage = false;
     private int TOTAL_PAGES = 5;
     private int currentPage = PAGE_START;
+
+    private Unbinder mUnbinder;
 
     @Inject
     MainScreenPresenter mainPresenter;
@@ -69,11 +76,8 @@ public class MainActivityFragment extends Fragment implements MainScreenContract
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.progress_indicator);
-        mErrorLayout = (LinearLayout) view.findViewById(R.id.error_layout);
-        mRetryButton = (Button) view.findViewById(R.id.error_btn_retry);
-        mErrorText = (TextView) view.findViewById(R.id.error_txt_cause);
+
+        mUnbinder = ButterKnife.bind(this, view);
 
         DaggerMainScreenComponent.builder()
                 .netComponent(((App) getActivity().getApplicationContext()).getNetComponent())
@@ -125,6 +129,12 @@ public class MainActivityFragment extends Fragment implements MainScreenContract
                 loadFirstPage();
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mUnbinder.unbind();
     }
 
     @Override
