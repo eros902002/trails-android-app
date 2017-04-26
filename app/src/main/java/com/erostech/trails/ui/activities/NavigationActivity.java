@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.transition.Transition;
 import android.view.MenuItem;
@@ -42,6 +43,9 @@ public class NavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -72,16 +76,19 @@ public class NavigationActivity extends AppCompatActivity {
     private void showSearch() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, MainListingFragment.newInstance()).commit();
+        setTitle(R.string.title_search);
     }
 
     private void showGenres() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, GenreListFragment.newInstance()).commit();
+        setTitle(R.string.title_genres);
     }
 
     private void showMore() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, MoreFragment.newInstance()).commit();
+        setTitle(R.string.title_more);
     }
 
 }

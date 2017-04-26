@@ -34,4 +34,9 @@ public class GenreListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_genres, container, false);
         return view;
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 }
