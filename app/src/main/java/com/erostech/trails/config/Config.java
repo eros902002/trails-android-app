@@ -11,4 +11,6 @@ public class Config {
     public static final String MOVIES_DEFAULT_LANGUAGE = "en_US";
     public static final String MOVIES_API_URL = "https://api.themoviedb.org/3/";
     public static final String MOVIES_IMAGES_BASE_URL = "https://image.tmdb.org/t/p/w150";
+
+    public static final boolean INCLUDE_ADULT = false;
 }
