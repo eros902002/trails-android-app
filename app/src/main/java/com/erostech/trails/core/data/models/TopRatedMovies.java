@@ -14,12 +14,15 @@ public class TopRatedMovies {
     @SerializedName("page")
     @Expose
     private Integer page;
+
     @SerializedName("results")
     @Expose
-    private List<Result> results = new ArrayList<>();
+    private List<Movie> movies = new ArrayList<>();
+
     @SerializedName("total_results")
     @Expose
     private Integer totalResults;
+
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
@@ -32,12 +35,12 @@ public class TopRatedMovies {
         this.page = page;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<Movie> getMovies() {
+        return movies;
     }
 
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 
     public Integer getTotalResults() {

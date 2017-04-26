@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.erostech.trails.R;
 import com.erostech.trails.callbacks.LoadingViewHolderCallback;
 import com.erostech.trails.callbacks.PaginationAdapterCallback;
-import com.erostech.trails.core.data.models.Result;
+import com.erostech.trails.core.data.models.Movie;
 import com.erostech.trails.ui.viewholders.LoadingViewHolder;
 import com.erostech.trails.ui.viewholders.MovieViewHolder;
 
@@ -26,7 +26,7 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private static final int ITEM = 0;
     private static final int LOADING = 1;
 
-    private List<Result> mMovies;
+    private List<Movie> mMovies;
     private Context mContext;
 
     private boolean isLoadingAdded = false;
@@ -69,11 +69,11 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Result result = mMovies.get(position);
+        Movie movie = mMovies.get(position);
 
         switch (getItemViewType(position)) {
             case ITEM:
-                ((MovieViewHolder) holder).bind(result);
+                ((MovieViewHolder) holder).bind(movie);
                 break;
             case LOADING:
                 LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
@@ -92,27 +92,27 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return mMovies == null ? 0 : mMovies.size();
     }
 
-    public List<Result> getMovies() {
+    public List<Movie> getMovies() {
         return mMovies;
     }
 
-    public void setMovies(List<Result> movies) {
+    public void setMovies(List<Movie> movies) {
         this.mMovies = movies;
     }
 
-    public void add(Result r) {
+    public void add(Movie r) {
         mMovies.add(r);
         notifyItemInserted(mMovies.size() - 1);
     }
 
-    public void addAll(List<Result> movies) {
-        for (Result result : movies) {
-            add(result);
+    public void addAll(List<Movie> movies) {
+        for (Movie movie : movies) {
+            add(movie);
         }
     }
 
-    public void remove(Result result) {
-        int position = mMovies.indexOf(result);
+    public void remove(Movie movie) {
+        int position = mMovies.indexOf(movie);
         if (position > -1) {
             mMovies.remove(position);
             notifyItemRemoved(position);
@@ -126,7 +126,7 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public Result getItem(int position) {
+    public Movie getItem(int position) {
         return mMovies.get(position);
     }
 
@@ -136,16 +136,16 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public void addLoadingFooter() {
         isLoadingAdded = true;
-        add(new Result());
+        add(new Movie());
     }
 
     public void removeLoadingFooter() {
         isLoadingAdded = false;
 
         int position = mMovies.size() - 1;
-        Result result = getItem(position);
+        Movie movie = getItem(position);
 
-        if (result != null) {
+        if (movie != null) {
             mMovies.remove(position);
             notifyItemRemoved(position);
         }

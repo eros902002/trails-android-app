@@ -13,7 +13,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.erostech.trails.R;
 import com.erostech.trails.config.Config;
-import com.erostech.trails.core.data.models.Result;
+import com.erostech.trails.core.data.models.Movie;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,14 +40,14 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(Result result) {
-        if (result != null) {
-            movieTitle.setText(result.getTitle());
-            year.setText(result.getReleaseDate().substring(0, 4) + " | " + result.getOriginalLanguage().toUpperCase());
-            movieDesc.setText(result.getOverview());
+    public void bind(Movie movie) {
+        if (movie != null) {
+            movieTitle.setText(movie.getTitle());
+            year.setText(movie.getReleaseDate().substring(0, 4) + " | " + movie.getOriginalLanguage().toUpperCase());
+            movieDesc.setText(movie.getOverview());
 
             Glide.with(itemView.getContext())
-                    .load(Config.MOVIES_IMAGES_BASE_URL + result.getPosterPath())
+                    .load(Config.MOVIES_IMAGES_BASE_URL + movie.getPosterPath())
                     .listener(new RequestListener<String, GlideDrawable>() {
                         @Override
                         public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
