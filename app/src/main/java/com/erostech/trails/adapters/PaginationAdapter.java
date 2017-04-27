@@ -27,7 +27,6 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private static final int LOADING = 1;
 
     private List<Movie> mMovies;
-    private Context mContext;
 
     private boolean isLoadingAdded = false;
     private boolean retryPageLoad = false;
@@ -37,7 +36,6 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private String errorMessage;
 
     public PaginationAdapter(Context context, PaginationAdapterCallback callback) {
-        this.mContext = context;
         this.mCallback = callback;
         mMovies = new ArrayList<>();
     }
@@ -90,14 +88,6 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public int getItemCount() {
         return mMovies == null ? 0 : mMovies.size();
-    }
-
-    public List<Movie> getMovies() {
-        return mMovies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.mMovies = movies;
     }
 
     public void add(Movie r) {
