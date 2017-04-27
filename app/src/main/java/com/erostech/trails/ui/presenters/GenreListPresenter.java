@@ -7,6 +7,7 @@ import com.erostech.trails.ui.contracts.GenreListContract;
 
 import javax.inject.Inject;
 
+import io.realm.Realm;
 import retrofit2.Retrofit;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
