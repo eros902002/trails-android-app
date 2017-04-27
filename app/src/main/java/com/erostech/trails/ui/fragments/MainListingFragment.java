@@ -88,7 +88,7 @@ public class MainListingFragment extends Fragment implements MainListingContract
         mUnbinder = ButterKnife.bind(this, view);
 
         DaggerMainListingComponent.builder()
-                .netComponent(((App) getActivity().getApplicationContext()).getNetComponent())
+                .appComponent(((App) getActivity().getApplicationContext()).getAppComponent())
                 .mainListingModule(new MainListingModule(this))
                 .build()
                 .inject(this);

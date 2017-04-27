@@ -1,6 +1,6 @@
 package com.erostech.trails.ui.components;
 
-import com.erostech.trails.core.component.NetComponent;
+import com.erostech.trails.core.component.AppComponent;
 import com.erostech.trails.ui.modules.MainListingModule;
 import com.erostech.trails.ui.fragments.MainListingFragment;
 import com.erostech.trails.util.CustomScope;
@@ -12,7 +12,7 @@ import dagger.Component;
  */
 
 @CustomScope
-@Component(dependencies = NetComponent.class, modules = MainListingModule.class)
+@Component(dependencies = AppComponent.class, modules = MainListingModule.class)
 public interface MainListingComponent {
     void inject(MainListingFragment fragment);
 }

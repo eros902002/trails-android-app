@@ -79,7 +79,7 @@ public class GenreListFragment extends Fragment implements GenreListContract.Vie
         mUnbinder = ButterKnife.bind(this, view);
 
         DaggerGenreListComponent.builder()
-                .netComponent(((App) getActivity().getApplicationContext()).getNetComponent())
+                .appComponent(((App) getActivity().getApplicationContext()).getAppComponent())
                 .genreListModule(new GenreListModule(this))
                 .build()
                 .inject(this);

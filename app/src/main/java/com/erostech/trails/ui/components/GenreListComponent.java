@@ -1,8 +1,6 @@
 package com.erostech.trails.ui.components;
 
-import com.erostech.trails.core.component.DatabaseComponent;
-import com.erostech.trails.core.component.NetComponent;
-import com.erostech.trails.core.module.DatabaseModule;
+import com.erostech.trails.core.component.AppComponent;
 import com.erostech.trails.ui.fragments.GenreListFragment;
 import com.erostech.trails.ui.modules.GenreListModule;
 import com.erostech.trails.util.CustomScope;
@@ -14,7 +12,7 @@ import dagger.Component;
  */
 
 @CustomScope
-@Component(dependencies = NetComponent.class, modules = GenreListModule.class)
+@Component(dependencies = AppComponent.class, modules = GenreListModule.class)
 public interface GenreListComponent {
     void inject(GenreListFragment fragment);
 }

@@ -1,11 +1,13 @@
 package com.erostech.trails.core.component;
 
 import com.erostech.trails.core.module.AppModule;
+import com.erostech.trails.core.module.DatabaseModule;
 import com.erostech.trails.core.module.NetModule;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
+import io.realm.Realm;
 import retrofit2.Retrofit;
 
 /**
@@ -13,7 +15,8 @@ import retrofit2.Retrofit;
  */
 
 @Singleton
-@Component(modules = {AppModule.class, NetModule.class})
-public interface NetComponent {
+@Component(modules = {AppModule.class, NetModule.class, DatabaseModule.class})
+public interface AppComponent {
     Retrofit retrofit();
+    Realm realm();
 }
