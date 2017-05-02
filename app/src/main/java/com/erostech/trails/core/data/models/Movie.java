@@ -1,5 +1,8 @@
 package com.erostech.trails.core.data.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,7 +13,7 @@ import java.util.List;
  * Created by erosgarciaponte on 19/4/17.
  */
 
-public class Movie {
+public class Movie implements Parcelable {
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
@@ -53,6 +56,10 @@ public class Movie {
     @SerializedName("vote_average")
     @Expose
     private Double voteAverage;
+
+    public Movie() {
+
+    }
 
     public String getPosterPath() {
         return posterPath;
@@ -165,4 +172,71 @@ public class Movie {
     public void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public Movie(Parcel in) {
+        posterPath = in.readString();
+        adult = in.readByte() != 0;
+        overview = in.readString();
+        releaseDate = in.readString();
+
+        int idsLenght = in.readInt();
+        int[] ids = new int[idsLenght];
+        in.readIntArray(ids);
+        genreIds = new ArrayList<>(idsLenght);
+        for (int i: ids) {
+            genreIds.add(i);
+        }
+
+        id = in.readInt();
+        originalTitle = in.readString();
+        originalLanguage = in.readString();
+        title = in.readString();
+        backdropPath = in.readString();
+        popularity = in.readDouble();
+        voteCount = in.readInt();
+        video = in.readByte() != 0;
+        voteAverage = in.readDouble();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(posterPath);
+        dest.writeByte((byte) (adult ? 1 : 0));
+        dest.writeString(overview);
+        dest.writeString(releaseDate);
+
+        int idsCount = genreIds.size();
+        int[] ids = new int[idsCount];
+        for (int i = 0; i < idsCount; i++) {
+            ids[i] = genreIds.get(i);
+        }
+        dest.writeInt(idsCount);
+        dest.writeIntArray(ids);
+
+        dest.writeInt(id);
+        dest.writeString(originalTitle);
+        dest.writeString(originalLanguage);
+        dest.writeString(title);
+        dest.writeString(backdropPath);
+        dest.writeDouble(popularity);
+        dest.writeInt(voteCount);
+        dest.writeByte((byte) (video ? 1 : 0));
+        dest.writeDouble(voteAverage);
+    }
+
+    public static final Parcelable.Creator<Movie> CREATOR
+            = new Parcelable.Creator<Movie>() {
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }
