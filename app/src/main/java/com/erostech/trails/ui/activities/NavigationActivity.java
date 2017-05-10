@@ -78,7 +78,7 @@ public class NavigationActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragment_container, MainListingFragment.newInstance())
                 .commit();
-        setTitle(R.string.title_search);
+        setTitle(R.string.title_top_rated);
     }
 
     private void showGenres() {

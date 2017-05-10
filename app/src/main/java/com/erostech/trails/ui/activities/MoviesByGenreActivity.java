@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.erostech.trails.Constants;
@@ -35,6 +36,9 @@ public class MoviesByGenreActivity extends AppCompatActivity {
 
         if (getIntent().hasExtra(Constants.ARGUMENT_GENRE)) {
             Genre genre = getIntent().getParcelableExtra(Constants.ARGUMENT_GENRE);
+
+            setTitle(genre.getName());
+
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.fragment_container, MoviesByGenreFragment.newInstance(genre))
@@ -44,4 +48,15 @@ public class MoviesByGenreActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 }

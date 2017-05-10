@@ -19,7 +19,7 @@ import android.view.animation.Interpolator;
  * Created by erosgarciaponte on 27/04/2017.
  */
 
-public class BottomNavigationBehavior <V extends View> extends VerticalScrollingBehavior<V>{
+public class BottomNavigationBehavior<V extends View> extends VerticalScrollingBehavior<V> {
     private static final int DEFAULT_ANIMATION_DURATION = 200;
     private static final int TAB_ANIMATION_DURATION = 300;
 
@@ -36,7 +36,7 @@ public class BottomNavigationBehavior <V extends View> extends VerticalScrolling
     private int mSnackbarHeight = -1;
     private boolean scrollingEnabled = true;
     private boolean hideAlongSnackbar = false;
-    int[] attrsArray = new int[] { android.R.attr.id };
+    int[] attrsArray = new int[]{android.R.attr.id};
 
     public BottomNavigationBehavior() {
 

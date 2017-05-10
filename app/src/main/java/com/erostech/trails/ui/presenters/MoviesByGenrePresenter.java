@@ -42,7 +42,7 @@ public class MoviesByGenrePresenter implements MoviesByGenreContract.Presenter {
 
             @Override
             public void onNext(MoviesByGenre movies) {
-                mView.showInitialPage(movies.getMovies());
+                mView.showInitialPage(movies.getTotalPages(), movies.getMovies());
             }
         });
     }

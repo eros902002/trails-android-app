@@ -41,7 +41,7 @@ public class MainListingPresenter implements MainListingContract.Presenter {
 
             @Override
             public void onNext(TopRatedMovies movies) {
-                mView.showInitialPage(movies.getMovies());
+                mView.showInitialPage(movies.getTotalPages(), movies.getMovies());
             }
         });
     }

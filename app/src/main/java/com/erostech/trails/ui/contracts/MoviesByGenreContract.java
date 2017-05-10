@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface MoviesByGenreContract {
     interface View {
-        void showInitialPage(List<Movie> movies);
+        void showInitialPage(int totalPages, List<Movie> movies);
         void showNextPage(List<Movie> movies);
         void showInitialPageError(Throwable throwable);
         void showNextPageError(Throwable throwable);

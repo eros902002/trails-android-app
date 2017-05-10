@@ -30,6 +30,10 @@ public class Genre implements Parcelable {
         this.id = id;
     }
 
+    public String getStringId() {
+        return String.valueOf(id);
+    }
+
     public String getName() {
         return name;
     }

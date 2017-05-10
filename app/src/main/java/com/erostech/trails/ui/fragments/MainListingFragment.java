@@ -60,7 +60,7 @@ public class MainListingFragment extends Fragment implements MainListingContract
 
     private boolean isLoading = false;
     private boolean isLastPage = false;
-    private int TOTAL_PAGES = 5;
+    private int totalPages = 5;
     private int currentPage = PAGE_START;
 
     private Unbinder mUnbinder;
@@ -117,7 +117,7 @@ public class MainListingFragment extends Fragment implements MainListingContract
 
             @Override
             public int getTotalPageCount() {
-                return TOTAL_PAGES;
+                return totalPages;
             }
 
             @Override
@@ -133,12 +133,7 @@ public class MainListingFragment extends Fragment implements MainListingContract
 
         loadFirstPage();
 
-        mRetryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadFirstPage();
-            }
-        });
+        mRetryButton.setOnClickListener(v -> loadFirstPage());
     }
 
     @Override
@@ -148,14 +143,16 @@ public class MainListingFragment extends Fragment implements MainListingContract
     }
 
     @Override
-    public void showInitialPage(List<Movie> movies) {
+    public void showInitialPage(int totalPages, List<Movie> movies) {
         hideErrorView();
 
         mProgressBar.setVisibility(View.GONE);
 
+        this.totalPages = totalPages;
+
         mAdapter.addAll(movies);
 
-        if (currentPage <= TOTAL_PAGES) {
+        if (currentPage <= totalPages) {
             mAdapter.addLoadingFooter();
         } else {
             isLastPage = true;
@@ -169,7 +166,7 @@ public class MainListingFragment extends Fragment implements MainListingContract
 
         mAdapter.addAll(movies);
 
-        if (currentPage != TOTAL_PAGES) {
+        if (currentPage != totalPages) {
             mAdapter.addLoadingFooter();
         } else {
             isLastPage = true;

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="trails_about_developer">Eros Garcia Ponte</string>
+    <string name="moviedb_api_credit">This product uses the TMDb API but is not endorsed or certified by TMDb.</string>
+</resources>

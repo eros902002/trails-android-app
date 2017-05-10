@@ -31,7 +31,19 @@
         <activity
             android:name=".ui.activities.MoviesByGenreActivity"
             android:label="@string/title_activity_movies_by_genre"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.activities.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.activities.CreditsActivity"
+            android:label="@string/title_activity_credits"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.activities.LicensesActivity"
+            android:label="@string/title_activity_licenses"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
