@@ -12,6 +12,7 @@ import android.view.View;
 import com.erostech.trails.Constants;
 import com.erostech.trails.R;
 import com.erostech.trails.core.data.models.Genre;
+import com.erostech.trails.ui.fragments.MoviesByGenreFragment;
 
 public class MoviesByGenreActivity extends AppCompatActivity {
 
@@ -28,14 +29,19 @@ public class MoviesByGenreActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        if (getIntent().hasExtra(Constants.ARGUMENT_GENRE)) {
+            Genre genre = getIntent().getParcelableExtra(Constants.ARGUMENT_GENRE);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_container, MoviesByGenreFragment.newInstance(genre))
+                    .commit();
+        } else {
+            finish();
+        }
     }
 
 }

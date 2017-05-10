@@ -39,6 +39,7 @@ import butterknife.Unbinder;
  */
 
 public class GenreListFragment extends Fragment implements GenreListContract.View {
+    public static final String TAG = GenreListFragment.class.getSimpleName();
 
     @BindView(R.id.progress_indicator)
     ProgressBar mProgressBar;

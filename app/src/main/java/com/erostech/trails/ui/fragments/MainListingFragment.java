@@ -40,6 +40,7 @@ import butterknife.Unbinder;
  * A placeholder fragment containing a simple view.
  */
 public class MainListingFragment extends Fragment implements MainListingContract.View, PaginationAdapterCallback {
+    public static final String TAG = MainListingFragment.class.getSimpleName();
 
     private static final int PAGE_START = 1;
 

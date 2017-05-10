@@ -14,6 +14,7 @@ import com.erostech.trails.R;
  */
 
 public class MoreFragment extends Fragment {
+    public static final String TAG = MoreFragment.class.getSimpleName();
 
     public MoreFragment() {
 

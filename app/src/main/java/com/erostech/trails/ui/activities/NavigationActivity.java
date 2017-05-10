@@ -74,20 +74,26 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     private void showSearch() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, MainListingFragment.newInstance()).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, MainListingFragment.newInstance())
+                .commit();
         setTitle(R.string.title_search);
     }
 
     private void showGenres() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, GenreListFragment.newInstance()).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, GenreListFragment.newInstance())
+                .commit();
         setTitle(R.string.title_genres);
     }
 
     private void showMore() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, MoreFragment.newInstance()).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, MoreFragment.newInstance())
+                .commit();
         setTitle(R.string.title_more);
     }
 
