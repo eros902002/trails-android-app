@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "735222076882",
+    "firebase_url": "https://trails-8065f.firebaseio.com",
+    "project_id": "trails-8065f",
+    "storage_bucket": "trails-8065f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735222076882:android:c685aaf6d02613be",
+        "android_client_info": {
+          "package_name": "com.erostech.trails"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735222076882-k4a77vi57d8ghsqmc9boua1mdg75fmvk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.erostech.trails",
+            "certificate_hash": "474c41e42088aad9ef0b16f1e8f6cd10ac30962d"
+          }
+        },
+        {
+          "client_id": "735222076882-9ad3tgc35o5e6fqts7gl42isg2ph2s8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDsKd5a2WLeMmYxPpLgrWW8Z6isS9O0W4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735222076882-9ad3tgc35o5e6fqts7gl42isg2ph2s8s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
