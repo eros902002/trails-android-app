@@ -50,23 +50,24 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
             year.setText(mMovie.getReleaseDate().substring(0, 4) + " | " + mMovie.getOriginalLanguage().toUpperCase());
             movieDesc.setText(mMovie.getOverview());
 
-            Glide.with(itemView.getContext())
-                    .load(Config.MOVIES_IMAGES_BASE_URL + mMovie.getPosterPath())
-                    .listener(new RequestListener<String, GlideDrawable>() {
-                        @Override
-                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                            return false;
-                        }
+            if (mMovie.getPosterPath() != null && !mMovie.getPosterPath().isEmpty()) {
+                Glide.with(itemView.getContext())
+                        .load(Config.MOVIES_IMAGES_BASE_URL + mMovie.getPosterPath())
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                return false;
+                            }
 
-                        @Override
-                        public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                            return false;
-                        }
-                    })
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
-                    .crossFade()
-                    .into(posterImg);
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                return false;
+                            }
+                        })
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .crossFade()
+                        .into(posterImg);
+            }
 
             itemView.setOnClickListener(this);
         } else {
